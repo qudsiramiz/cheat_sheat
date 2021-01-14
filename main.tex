@@ -1,0 +1,776 @@
+\documentclass[twoside,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[yyyymmdd]{datetime}
+
+\renewcommand{\dateseparator}{-}
+\newcommand{\tcb}{\color{blue}}
+\newcommand{\tcc}{\color{cyan}}
+\newcommand{\tcr}{\color{red}}
+\newcommand{\tcg}{\color{gray}}
+\newcommand{\tco}{\color{orange}}
+\newcommand{\tcp}{\color{purple}}
+\newcommand{\tck}{\color{black}}
+
+\newcommand{\ra }{$\rightarrow$ }
+\newcommand{\hs}{\hspace}
+
+\setcounter{tocdepth}{3}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=magenta,
+	linkcolor=blue,
+	urlcolor=purple
+}
+
+\titlespacing{\section}{0pt}{0\baselineskip}{\baselineskip}
+\setlength{\columnseprule}{1pt}
+
+\begin{document}
+
+
+\begin{center}
+	\Large\textbf{Cheat Sheet}\\
+	\tcg \large\textit{R. Qudsi}\\
+	\large\textit{University of Delaware, Newark, DE}\\
+	Last updated on: \today ~@ \currenttime
+\end{center}
+
+\begin{multicols}{2}
+
+\tcc  \section{VIM}
+
+	\tcc \subsection{Global}
+		\tcr :help \tcb  keyword \tck \ra
+		 open help for keyword\\
+		\tcr :o \tcb  file \tck \ra open
+		file\\
+		\tcr :saveas \tcb  file \tck $\rightarrow$
+		save file as\\
+		\tcr :close \tck \ra close current pane
+
+	\tcc \subsection{Cursor Movement}
+
+		\tcr h \tck \ra move cursor left\\
+		\tcr j \tck \ra move cursor right\\
+		\tcr k \tck \ra move cursor up\\
+		\tcr l \tck \ra move cursor down\\
+		\tcr H \tck \ra move to top of screen\\
+		\tcr M \tck \ra move to middle of 
+		screen\\
+		\tcr L \tck \ra move to bottom of 
+		screen\\
+		\tcr w \tck \ra jump forward to the 
+		start of a word\\
+		\tcr W \tck \ra jump forward to the 
+		start of a word (words can contain punctuation)\\
+		\tcr e \tck \ra jump forward to the 
+		end of a word\\
+		\tcr E \tck \ra jum forward to the end 
+		of the word (words can contain punctuation)\\
+		\tcr b \tck \ra jump backward to the 
+		start of a word\\
+		\tcr B \tck \ra jump backward to the 
+		start of a word (words can contain punctuation)\\
+		\tcr 0 \tck \ra jump to the start of a
+		line\\
+		\tcr $\wedge$ \tck \ra jump to first 
+		non-blank character of the line\\
+		\tcr $\$$ \tck \ra jump to the end of 
+		the line\\
+		\tcr g \tck \ra jump to the last 
+		non-blank character of the line\\
+		\tcr gg \tck \ra go to the first line 
+		of the document\\
+		\tcr G \tck \ra go to the last line 
+		of the document\\
+		\tcr 5G \tck \ra go to line 5\\
+		\tcr :x \tck \ra go to line number 
+		\textbf{x}\\
+		\tcr fx \tck \ra jump to the next 
+		occurance of charater \textbf{x}\\
+		\tcr tx \tck \ra jump to before next 
+		occurance of character \textbf{x}\\
+		\tcr $\}$ \tck \ra jump to next 
+		paragraph (or function block, when editing code)\\
+		\tcr - \tck \ra jump to previous 
+		paragraph (or function block when editing code)\\
+		\tcr zz \tck \ra center cursor on 
+		screen\\
+		\tcr Ctrl+b \tck \ra move back one 
+		full screen\\
+		\tcr Ctrl+f \tck \ra move forward one 
+		full screen\\
+		\tcr Ctrl+d \tck \ra move down half 
+		screen\\
+		\tcr Ctrl+u \tck \ra move up half 
+		screen
+
+		\hs{-1 cm}\tcg \textit{Tip: Prefix a cursor movement
+		command with a number to repeat it. For example, 4j moves down 
+		4 lines}
+
+	\tcc \subsection{Insert Mode}
+
+		\tcr i \tck \ra insert before the 
+		cursor\\
+		\tcr I \tck \ra insert at the beginning
+		of the line\\
+		\tcr a \tck \ra insert (append) after 
+		the cursor\\
+		\tcr A \tck \ra insert (append) at the
+		end of the line\\
+		\tcr o \tck \ra append (open) a new line
+		below the current line\\
+		\tcr O \tck \ra append (open) a new line
+		above the current line\\
+		\tcr ea \tck \ra insert (append) at the
+		end of the word\\
+		\tcr Esc \tck \ra exit insert mode
+
+	\tcc \subsection{Editing}
+
+		\tcr r \tck \ra replace a single 
+		character\\
+		\tcr R \tck \ra replace multiple 
+		character\\
+		\tcr J \tck \ra join line below to the
+		current line\\
+		\tcr cc \tck \ra change (replace) 
+		entire line (enters the insert mode)\\
+		\tcr cw \tck \ra change (replace) to 
+		the end of the word\\
+		\tcr c$\$$ \tck \ra change (replace) to
+		the end of the line\\
+		\tcr s \tck \ra delete character and
+		substitute text\\
+		\tcr S \tck \ra delete line and 
+		substitute text (same as cc)\\
+		\tcr xp \tck \ra transpose two letters
+		(delete and paste)\\
+		\tcr u \tck \ra undo\\
+		\tcr Ctrl+r \tck \ra redo\\
+		\tcr . \tck \ra repeat last command
+
+	\tcc \subsection{Visual Mode}
+
+		\tcr v \tck \ra start visual mode, mark
+		line, then do a command (like y-yank)\\
+		\tcr V \tck \ra start linewise visual 
+		mode\\
+		\tcr Ctrl+v \tck \ra Start blockwise 
+		visual mode\\
+		\tcr o \tck \ra move to the end of 
+		marked area\\
+		\tcr O \tck \ra move to the oher 
+		corner of block\\
+		\tcr xaw \tck \ra mark \textbf{x} 
+		words\\
+		\tcr ab \tck \ra a block with ()\\
+		\tcr aB \tck \ra a block with $\{ \}$\\
+		\tcr ib \tck \ra inner block with ()\\
+		\tcr iB \tck \ra inner block with
+		$\{ \}$\\
+		\tcr Esc \tck \ra exit visual mode\\
+		\tcr $ \geq $ \tck \ra shift text 
+		right\\
+		\tcr $\leq$ \tck \ra shift text left\\
+		\tcr y \tck \ra yank (copy) marked 
+		text\\
+		\tcr d \tck \ra delete marked text\\
+		\tcr $\sim$ \tck \ra switch case
+
+	\tcc \subsection{Cut and Paste}
+
+		\tcr yy \tck \ra yank (copy) a line\\
+		\tcr 2yy \tck \ra yank (copy) 2 lines\\
+		\tcr yw \tck \ra yank (copy) the 
+		characters of the word from the cursor position to the start of
+		the next word\\
+		\tcr y$\$$ \tck \ra yank (copy) to end 
+		of line\\
+		\tcr p \tck \ra put (paste) the 
+		clipboard after cursor\\
+		\tcr P \tck \ra put (paste) before 
+		cursor\\
+		\tcr dd \tck \ra delete (cut) a line\\
+		\tcr xdd \tck \ra delete (cut) 
+		\textbf{x} lines\\
+		\tcr xdw \tck \ra delete (cut) 
+		\textbf{x} words from the cursor position to the start of the
+		next word\\
+		\tcr D \tck \ra delete (cut) to the end
+		of the line\\
+		\tcr d$\$$ \tck \ra delete (cut) to the
+		end of the line\\
+		\tcr d$\wedge$ \tck \ra delete (cut) 
+		to the first non-blank character of the line\\
+		\tcr d0 \tck \ra delete (cut) to the
+		begining of the line\\
+		\tcr x \tck \ra delete (cut) character
+
+	\tcc \subsection{Exiting}
+
+		\tcr :w \tck \ra write (save) the file,
+		but don't exit\\
+		\tcr :w !sudo tee $\%$ \tck \ra write 
+		out the current file using sudo\\
+		\tcr :wq or :x or ZZ \tck \ra write 
+		(save) and quit\\
+		\tcr :q \tck \ra quit (fails if there
+		are unsaved changes)\\
+		\tcr :q! or ZQ \tck \ra quit and throw
+		away unsaved changes
+
+	\tcc \subsection{Search and Replace}
+
+		\tcc \subsubsection{Search}
+		
+			\tcr /pattern \tck \ra search 
+			for \textbf{pattern}\\
+			\tcr ?pattern \tck \ra search 
+			backward for \textbf{pattern}\\
+			\tcr vpattern \tck \ra 'very 
+			magic' pattern: non-alphanumeric characters are 
+			interpreted as special regex symbols (no escaping 
+			needed)\\
+			\tcr :$\%$s/pattern//gn \tck 
+			\ra count the number of matches of a 
+			\textbf{pattern} in the current buffer\\
+			\tcr :$\%$s/pattern//n \tck $\rightarrow$
+			count the number of matches of a \textbf{pattern}\\
+			\tcr :a,bs/pattern//gn \tck $\rightarrow$
+			count the number of matches of a \textbf{pattern} from
+			line \textbf{a} to \textbf{b}\\
+			\tcr :'$<$,'$>$s/pattern//gn \tck 
+			\ra count the number of matches of a 
+			\textbf{pattern} in the lines in the most recent visual
+			selection\\
+			\tcr :$\%$s///gn \tck \ra count
+			the number of occurrences of the last used search 
+			pattern\\
+			\tcr n \tck \ra repeat search 
+			in same direction\\
+			\tcr N \tck \ra repeat search 
+			in opposite direction\\
+			\tcr :noh \tck \ra remove 
+			highlighting of search matches
+		\vfill \null
+%		\vspace{1 cm}
+		\tcc \subsubsection{Replace}
+
+			\tcr :$\%$s/old/new/g \tck $\rightarrow$
+			replace all \textbf{old} with \textbf{new} throughout 
+			file\\
+			\tcr :$\%$s/old/new/gc \tck $\rightarrow$
+			replace all \textbf{old} with \textbf{new} throughout 
+			file with confirmations\\
+			\tcr :$\%$s/old/new/gci \tck $\rightarrow$
+			replace all \textbf{old} (case sensitive because of flag
+			\textbf{i}) with \textbf{new} throughout file with
+			confirmations (\textbf{$\%$s/old$\backslash$c/new/gci}
+			does the same thing)\\
+			\tcr :$\%$s/$\backslash\left< old \backslash 
+			\right>$
+			/new/gc \tck \ra replace all 
+			\textbf{old} (exact pattern) with \textbf{new} 
+			throughout file with confirmations\\
+			\tcr :.,+as/foo/bar/g \tck $\rightarrow$
+			replace all \textbf{old} with \textbf{new} for the 
+			current line (.) and the \textbf{a} lines.\\
+			\tcr :g/$\wedge$word/s/old/new/g \tck 
+			\ra replace all \textbf{old} with \textbf{new}
+			for each line that starts with \textbf{word}\\
+			\tcr :s/foo/bar/g \tck \ra 
+			replace all \textbf{old} with \textbf{new} in the 
+			current line.\\
+			\tcr :A,Bs/foo/bar/g \tck $\rightarrow$
+			replace all \textbf{old} with \textbf{new} from line
+			\textbf{A} to \textbf{B}.\\
+			\tcg \textbf{Notes: $/\backslash t$ is tab, 
+			$/\backslash s$ is white space, $/\backslash n$ is new 
+			line, }\\
+			After an opening \textbf{[}, everything until the next 
+			closing \textbf{]} specifies a collection.
+
+	\tcc \subsection{Sessions}
+
+		\tcr :mksession $\sim$/x.vim \tck \ra 
+		create a session named \textbf{x.vim} and save it\\
+		\tcr :source $\sim$/x.vim \tck \ra 
+		restore session named \textbf{x.vim}, while in vi\\
+		\tcr $\$ $ vim -S $\sim$/x.vim \tck $\rightarrow$
+		restore a session named \textbf{x.vim} (in command line)
+
+		\tcc \subsection{Miscellaneous}
+
+		\tcr :ab \tcb  word1 word2 \tck 
+		\ra change word1 to word 2 (helps to store 
+		abbreviations or avoid common typos)\\
+		\tcr :una \tcb  word \tck $\rightarrow$
+		remove word from the list of abbreviations\\
+		\tcr :ab \tck \ra lists all the
+		abbreviations being used\\
+
+		\hs{-0.5 cm}\tcg \textit{Tip: The abbreviations work 
+		at local level, and once the session gets over those are lost.
+		In order to make it universal, go to '.vimrc' and add the 
+		command \textbf{:iabbrev w1 w2} }
+
+		\tcc \subsection{Marks}
+
+		\tcr :marks \tck \ra list of marks\\
+		\tcr ma \tck \ra set current position \
+		for mark A\\
+		\tcr 'a \tck \ra jump to position of 
+		mark A\\
+		\tcr y'a \tck \ra yank text to position
+		of mark A
+
+	\vspace{1 cm}
+	\tcc \subsection{Multiple Tabs and windows}
+
+		\tcr vi \tcb  -p x y z \tck $\rightarrow$
+		open files \textbf{x, y} and \textbf{z}\\
+		\tcr :tabnew \tcb  x \tck $\rightarrow$
+		open file \textbf{x} in a new tab\\
+		\tcr :tabc \tck \ra close the tab\\
+		\tcr :tabn \tck \ra switch to next tab\\
+		\tcr :tabp \tck \ra switch to previous 
+		tab\\
+		\tcr :tabn \tcb  x \tck \ra move
+		to $\textbf{x}^{th}$ tab\\
+		\tcr gt or :tabnext or :tabn \tck $\rightarrow$
+		move to the next tab\\
+		\tcr gT or :tabprev or :tabp \tck $\rightarrow$
+		move to the previous tab\\
+		\tcr xgt \tck \ra go to 
+		$\textbf{x}^{th}$ tab\\
+		\tcr :tabr \tck \ra move to first tab\\
+		\tcr :tabl \tck \ra move to last tab\\
+		\tcr :tabs \tck \ra list all open tabs\\
+		\tcr :tabmove \tcb  x \tck $\rightarrow$
+		move current tab to the $\textbf{x}^{th}$ position (indexed 
+		from 0)\\
+		\tcr :tabclose or :tabc \tck \ra close
+		the current tab and all its windows\\
+		\tcr :tabonly or :tabo \tck \ra close
+		all tabs except for the current one\\
+		\tcr :tabdo \tcb  command \tck 
+		\ra run the command on all tabs (e.g. :tabdo q -
+		closes all opened tabs)\\
+		\tcr :qa \tck \ra close all open tabs\\
+		\tcr :wa \tck \ra save all the open 
+		tabs\\
+		\tcr :qwa or :xa \tck \ra save and exit
+		all open tabs\\
+		\tcr :e \tcb  x \tck \ra open 
+		file \textbf{x} in this window (closes the previous file)\\
+		\tcr :ls \tck \ra show the list of 
+		currently open buffers (windows)\\
+		\tcr :b \tcb  x \tck \ra go to
+		buffer (window) \textbf{x}\\
+		\tcr :split \tcb  x \tck \ra 
+		split window horizontally and load file \textbf{x}\\
+		\tcr :vs \tcb  x \tck \ra 
+		split window vertically and open file \textbf{x} (readmode 
+		only)\\
+		\tcr :vsplit x \tck \ra split window
+		vertically and open file \textbf{x}\\
+		\tcr :hide \tck \ra close the current 
+		window\\
+		\tcr :only \tck \ra keep only the 
+		current window open\\
+		\tcr Ctrl + ww \tck \ra switch windows\\
+		\tcr Ctrl + wq \tck \ra quit a window\\
+		\tcr Ctrl + wv \tck \ra split window 
+		vertically\\
+		\tcr Ctrl + wh/wl \tck \ra move cursor 
+		to the left/right window (vertical split)\\
+		\tcr Ctrl + wj/wk \tck \ra move cursor
+		to the window below/above (horizontal split)\\
+		\tcr Ctrl + wT \tck \ra move the 
+		current split window into its own tab\\
+		\tcr :e \tcb  file \tck \ra edit
+		a file in a new buffer\\
+		\tcr :bnext or :bn \tck \ra go to the 
+		next buffer\\
+		\tcr :bprev or :bp \tck \ra go to the
+		previous buffer\\
+		\tcr :bd \tck \ra delete a buffer (
+		close a file)\\
+		\tcr :ls \tck \ra list all open 
+		buffers\\
+		\tcr :sp \tcb  file \tck \ra 
+		open a file in a new buffer and split window\\
+		\tcr :vsp \tcb  file \tck $\rightarrow$
+		open a file in a new buffer and vertically split window\\
+
+	\vfill \null
+
+	\vspace{-1 cm}
+	\tcc \subsection{Search in Multiple Files}
+
+		\tcr :vimgrep /pattern/ {file} \tck $\rightarrow$
+		search for pattern in multiple files\\
+		\tcr :cn \tck \ra jump to the next 
+		match\\
+		\tcr :cp \tck \ra jump to the previous 
+		match\\
+		\tcr :copen \tck \ra open a window 
+		containing the list of matches
+
+	\tcc \subsection{Registers}
+
+		\tcr :reg \tck \ra show registers 
+		content\\
+		\tcr "xy \tck \ra yank into register 
+		\textbf{x}\\
+		\tcr "xp \tck \ra paste into register 
+		\textbf{x}\\
+
+		\tcg \textit{Tip: Registers are stored in /.viminfo,
+		and will be loaded again on next restart of vim.}\\
+		\textit{Tip: Register 0 always contains the value of the last 
+		yank}
+
+	\tcc \subsection{Macros}
+
+		\tcr qa \tck \ra record macro 
+		\textbf{a}\\
+		\tcr q \tck \ra stop recording macro\\
+		\tcr @a \tck \ra run macro \textbf{a}\\
+		\tcr @@ \tck \ra rerun last macro
+
+	\tcc \subsection{Opening a file from another folder while being
+	inside VIM}
+		\tcr :Ex \tck \ra Opens the pwd. Can 
+		navigate through the folders by moving up and down to the name
+		of the folder and pressing Enter.\\
+		\tcr :Ex \color{ blue} $\left< directory \right>$
+		\tck \ra Takes you to the \textbf{directory}.
+		Once inside the directory, navigate to the file you want to 
+		open and press enter.
+\newpage
+\tcc \section{Terminal}
+	\hs{-0.5 cm}\tcr  source \tcb  .bashrc \tck 
+	\ra Updates terminal with the updated \textbf{.bashrc} file\\
+	\tcr history \tcb  x \tck \ra Displays
+	last \textbf{x} used commands\\
+	\tcr history \tcb  $\vert$ grep str \tck 
+	\ra Displays all commands which started with \textbf{str}
+	(\tcg  \textit{You have aliased this command to \textbf{ch}
+	(in .bashrc), so can just use \texttt{ch str} instead of history
+	$\vert$ grep str} ).\\
+
+	\hs{-0.5 cm}\tcr  ctrl+u \tck  \ra Deletes
+	everything before cursor\\
+	\tcr  ctrl+k \tck  \ra Deletes everything after
+	cursor\\
+	\tcr  ctrl+l \tck  \ra Clear the screen\\
+	\tcr   nautilus \tcb  /path/folder \tck  \ra Open
+	the \textbf{folder}\\
+	\tcr !\tcb \# \tck \ra run command 
+	number \textbf{\#}\\
+	\tcr !\tcb str \tck \ra execute last 
+	command that began with \textbf{str}\\
+	\tcr !\tcb ?str? \tck \ra execute last
+	command that contains \textbf{str} (and not necessarily starts with)\\
+	\tcr cat or less \tcb $\sim$ /.bash\_history \tck 
+	\ra print out the history file\\
+	\tcr ls -1 $\mid$ wc -l \tck 
+	\ra counts the number of files in the present directoy\\
+	\tcr du \tcb {-command} \color{magenta} file/folder \tck 
+	\ra has several uses based on the \tcb {command} 
+	\tck given. Following are few examples:\\
+	\begin{itemize}
+		\item \tck \ra Without any additional command, gives
+		the size of each folder and sub-folders.
+		\item \tcb  -a \tck \ra Gives the size of every
+		folder and file
+		\item \tcb  -h \tck \ra Outputs size in human
+		readable format.
+		\item \tcb  -s \tck \ra Gives the summary of sizes.
+		\item \tcb  -k/m \tck \ra Gives size in kilobyte/
+		megabytes.
+		\item \tcb  -c \tck \ra Gives total disk space
+		in the last line.
+		\item \tcb  --exclude= \color{magenta}`*.fmt' \tck $\rightarrow$
+		Excludes displaying results of file with format \color{magenta}{fmt} \tck .
+		\item \tcb  --time \tck \ra Shows disk usage based 
+		on last modification time and displays time of modification as well.
+	\end{itemize}
+	\tcr man \tcb  command \tck \ra Shows the
+	manual for \tcr  \tcb  command\\
+	\tcr  find \tcb  command \tck \ra Has
+	several uses. Following are a few example:\\
+	\tck 
+	\begin{itemize}
+		\item \tcb  . \tck \ra Display all the 
+		files and directory inside the present directory ( replace dot
+		with a directory name to display everything in that directory)
+		\item \tcb  . -type d/f \tck \ra 
+		Display all the directory/file in the present directory
+		\item \tcb  . -type f -fname "test*" \tck 
+		\ra Display the location of all the files and the 
+		name of the files which start with name \textbf{test} 
+		\tcg  ( use \textbf{-iname} instead of \textbf{-name} 
+		to make search case insenitive. )\tck 
+		\item \tcb  . -type f -mmin -/+t \tck 
+		\ra Display all the files modified in less/more than
+		\textbf{t} minutes \tcg ( use \textbf{-mtime} for days)
+		\tck 
+		\item \tck  \tcb  . -size +5M
+		\tck  \ra Display all the files larger than
+		\textbf{5 MB} in size \tcg ( use `k' for kilobytes and
+		`G' for gigabytes)\tck 
+		\item \tck  \tcb  . - empty \tck 
+		\ra Display all the empty files
+	\end{itemize}
+
+	\hs{-0.6 cm}\tcr  grep \tcb  -winlr -A/B x ``str" 
+	file.ext \tck  \ra Search for text \textbf{str} in 
+	the file \textbf{file.ext}.\\
+	\tck 
+	\begin{itemize}
+		\item \tcr  w \tck  \ra Only display 
+		the ones with the whole match
+		\item \tcr  i \tck  \ra Make the search
+		case insensitive
+		\item \tcr  n \tck  \ra Display the 
+		line number \item \tcr  l \tck  $\rightarrow$
+		Display only the files which has \textbf{str} (doesn't show 
+		line numbers) \tcg ( using `c' instead of `l' which
+		also display the number of matches in each file ) \tck 
+		\item \tcr  r \tck  \ra Does recursive
+		search, in the present and all the other sub-directories
+		\item \tcr  \tck  A/B \ra Display 
+		\textbf{x} number of lines after/before the place where 
+		\textbf{str} has been used
+		\item \tcr  C \tck  \ra Display
+		\textbf{x}/2 number of lines before and after the place where
+		\textbf{str} has been used
+	\end{itemize}
+
+\tcc \section{crontab}
+	\hs{-0.5 cm}\tcr crontab \tcb  -e \tck 
+	\ra Gives you access (edit) to the \tcr  crontab 
+	\tck  file.\\
+	In the edit mode type the task you want to schedule in the following 
+	way:\\
+	\tcr  \tcb  * \tcr  * \color{green} * 
+	\color{magenta} * \tcg  * \tck  command 
+	\tck 
+	\begin{itemize}
+		\item \tcb  * \tck  means minute ( 0-59 )
+		\item \tcr   * \tck  means hour ( 0-23 )
+		\item \color{green} * \tck  means day of the month
+		( 1-31 )
+		\item \color{magenta} * \tck  means month of the 
+		year ( 1-12 )
+		\item \tcg  * \tck  means day of the week
+		( 0-6, Sunday to Saturday )
+	\end{itemize}
+
+	\hs{-0.7 cm} \tcr crontab \tcb  -r \tck 
+	\ra Removes any stored crontask! \tcg \\
+	Be very icareful while executing this command. Will wipe out every 
+	stored tasks!
+
+	\newpage
+
+\tcc \section{RSYNC}
+
+	\hs{-0.5cm}\tcg  Notes 2: Use \textbf{crontab} to start 
+	the rsync options\\
+	\hs{-0.5 cm}\tcr rsync \tcp /dir/dir1/* 
+	\tco dir2/ \tck  \ra Copies every file in
+	\tcp /dir1/ into \tco  /dir2 \tck ( Set *
+	to filename if you want to transfer a specific file)\\
+	\tcr rsync -r \tcp /dir/dir1/ \tco dir2/ 
+	\tck  \ra Copies everything (including directories)
+	from \tcp  /dir1/ \tck  into \tco /dir2
+	\tck \\
+	\tcg \textbf{Notes 3: Use of \textbf{`/'} after \textbf{dir1} is 
+	important. It makes sure that the content of \textbf{dir1} is copied 
+	into \textbf{dir2} and not the \textbf{dir1} itself }.\\
+
+	\hs{-0.5 cm}\tcr rsync \tcb  -av -in (or - -dry-run) 
+	- -delete \tcp /dir/dir1/* \tco dir2/ 
+	\tck \ra Syncs files from \tcp /dir1 to 
+	\tcp /dir2 with various options.\\
+	\hs{1 cm} i) \tcb  -a : \tck  Stands for `archive', 
+	recurses into directory like `-r' and preserves the information like 
+	modified date, owners etc.\\
+	\hs{1 cm} ii) \tcb  -av : \tck  `v' stands for 
+	verbose, thus it prints out the list of files it is changing.\\
+	\hs{1 cm} iii) \tcb  -in ( or - -dry-run) : \tck  
+	Shows the list of files and folders which will will be copied ( needs 
+	`-av' before it prints).\\
+	\hs{1 cm} iv) \tcb  - -delete : \tck  Completely 
+	syncs \tcp  /dir1 \tck  to \tcp  dir2, 
+	meaning, it will delete any file/folder from \tcp  /dir2
+	\tck  which weren't present in \tcp  /dir1. 
+	\tck  Be super careful while using this command.\\
+ 
+ 
+\tcc \section{VS Code}
+
+    \hs{-0.5cm}\tcg Note 3: For detailed descriptions click on the following 
+    \href{https://code.visualstudio.com/docs/getstarted/tips-and-tricks}{link}
+    
+    \hs{-0.5cm}\tcg  Notes 4: By default, the \textbf{VS~code} 
+    is in \textbf{vim} mode, so any short-cut that is also in \textbf{vim} 
+    won't work.\\
+    \hs{-0.5cm} \tcb  Ctrl+ or - \tck \ra 
+    Change the font size of various UI elements\\
+    \hs{-0.5cm} \tcb  Ctrl+\textbackslash \tck  \ra Open
+     another editor side by side (similar to \textbf{:vs} functionality 
+     of vim)\\
+    \hs{-0.5cm} \tcb Shift+Alt \tck \ra Box selection or column aligned 
+    selection\\
+    \hs{-0.5cm} \tcb Alt \tck \ra Fast scrolling (5x)\\
+    \hs{-0.5cm} \tcb Alt+Up or Alt+Down \tck \ra Move a selection of 
+    lines up or down (works in VI mode)\\
+    \hs{-0.5cm} \tcb Shift+Alt+Left or Shift+Alt+Right \tck \ra Shrink 
+    or expand selection\\
+    \hs{-0.5cm} \tcb Shift+Alt+Up or Shift+Alt+Down \tck \ra Copy the 
+    line below or above the present line\\
+    \hs{-0.5cm} \tcb Ctrl+Shift+[ or Ctrl+Shift+]\tck \ra Code folding
+     or expanding (if folded)\\
+    \hs{-0.5cm} \tcb Alt+F12 \tck \ra Peek at the definition and 
+     options (a new small window opens up with definition, press
+      Esc to close the new window)\\
+    \hs{-0.5cm} \tcb F12 \tck \ra Go to the definition file (opens 
+    a new tab)\\
+    \hs{-0.5cm} \tcb select a word + F2 \tck \ra Rename all occurrences 
+    of the selected word by renaming it to whatever.
+
+\tcc \section{GIT}
+
+	\hs{-0.8 cm} \tcr  git config --global credential.helper
+	 "cache --timeout=360" \tck \ra Saves your credentials
+	 for \textbf{360 seconds} so that you won't have to enter password for
+	 every push and pull requests.\\
+	\tcr git add --a \tck \ra add all the
+	 file for committing\\
+	\tcr git add -a \tck \ra Commit all the added
+	 files for pushing to the repository \\
+	\tcr git push \tck \ra Push all the committed 
+	 file to the online repository/branch \\
+	\tcr git \tcb config --global alias.hist 
+	``log --pretty=format: '\%h \%ad | \%s\%d [\%an]' --graph --date=short"
+	\tck \ra Aliasing \textbf{hist} command for GitHub\\
+	\tcr git hist \tck \ra Check the history of
+	commits on GIT\\
+	\tcr git clone \tcb ``url" ``where to clone" 
+	\tck  \ra Clone a remote repository to your local 
+	directrory\\
+	\tcr git merge \tcb ``branch" \tck $\rightarrow$
+	Merges the \textbf{branch} to the present branch (the one you are in)\\
+	\tcr git branch \tcb -d ``branch" \tck 
+	\ra Delete \textbf{branch} locally\\
+	\tcr git push \tcb origin --delete ``branch" \tck 
+	\ra Delete \textbf{branch} from the online repository\\
+	\tcr git checkout \tcb afe52 \tck \ra 
+	checkout the commit based on the hash\\
+	\tcr git checkout \tcb 'master@{1918-05-11 12:00:00}' 
+	\tck \ra Checkout based on date\\
+	\tcr git checkout \tcb @{314.days.ago}
+	\tck \ra Checkout based on day\\
+	\tcr git log \tck \ra To check the commits\\
+	\tcr git commit \tcb -m "insert message here"\tck 
+	\ra Make commit alongwith a message\\
+	\tcr git log \tck \ra To check the commits\\
+	\tcr git reset \tck \ra Uncommit all the files\\
+	\tcr git reset \tcb --hard \textbf{ID} \tck 
+	\ra will make local code and local history be just like it
+	was at that commit\\
+	\tcr git reset \tcb --soft \textbf{ID} \tck 
+	\ra will make local files changed to be like they were then,
+	but leave your history etc. the same.\\
+	\tcr git \tcb cherry-pick \textbf{ID} \tck 
+	\ra Sets the present repository to the state of other 
+	repository whose \textbf{ID} was used.\\
+	\tcr git stash \tcb save ``message"\tck 
+	\ra Stash the changes and return the files to before the all 
+	the changes made to it\\
+	\tcr git stash \tcb list\tck $\rightarrow$
+	Lists out all the stashed instances alongwith their IDs\\
+	\tcr git stash apply \tcb ``stash ID" \tck 
+	\ra Apply the stashed file. \tcg  ( this way the 
+	Stash ID is still stored and doesn't get deleted)\\
+	\tcr git stash \tcb pop \tck \ra Grabs
+	the stash on the top of the list, applies it, and drop the stash\\
+	\tcr git stash \tcb drop ID \tck \ra 
+	Drops the stash of that \textbf{ID}\\
+
+\vfill \null
+
+
+\tcc \section{Active Aliases in 
+.bash \textunderscore aliases file}
+
+	\begin{itemize}
+		\item \tcr ..\tck =\tcb ``cd .."
+		\item \tcr ...\tck =\tcb ``cd ../.."
+		\item \tcr ....\tck =\tcb ``cd ../../.."
+		\item \tcr .....\tck =\tcb ``cd ../../../
+		.."
+		\item \tcr $\sim$ \tck =\tcb ``cd $\sim$"
+		\item \tcr dr\tck =\tcb ``cd 
+		$\sim$/Dropbox/Studies/Research"
+		\item \tcr dl\tck =\tcb ``cd $\sim$
+		/Downloads"
+		\item \tcr d\tck =\tcb ``cd $\sim$
+		/Desktop"
+		\item \tcr gh\tck =\tcb ``cd $\sim$
+		/Desktop/GIT"
+		\item \tcr fm\tck =\tcb ``cd $\sim$
+		/Desktop/GIT/
+		fm\textunderscore development"
+		\item \tcr pr\tck =\tcb ``cd $\sim$
+		/Desktop/GIT/Personal/Janus"
+		\item \tcr dt\tck =\tcb ``cd 
+		/data/Research/"
+		\item \tcr dfm\tck =\tcb ``cd 
+		/data/Research/Active\textunderscore Research/fc \\
+		/Janus"
+		\item \tcr sjfm\tck =\tcb ``vi -S $\sim$
+		/session\textunderscore janus\textunderscore fm.vim"
+		\item \tcr sjma\tck =\tcb ``vi -S $\sim$
+		/session\textunderscore janus\textunderscore master.vim"
+		\item \tcr sjlo\tck =\tcb ``vi -S $\sim$
+		/session\textunderscore janus\textunderscore fm\textunderscore
+		local.vim"
+		\item \tcr sjpr\tck =\tcb ``vi -S $\sim$
+		/session\textunderscore janus\textunderscore personal.vim"
+		\item \tcr smms\tck =\tcb ``vi -S $\sim$
+		/session\textunderscore mms.vim"
+		\item \tcr ipfm\tck =\tcb ``ipython 
+		--matplotlib =qt4 --profile = fm"
+		\item \tcr ipma\tck =\tcb ``ipython 
+		--matplotlib =qt4 profile = master"
+		\item \tcr ippr\tck =\tcb ``ipython 
+		--matplotlib =qt4 --profile = personal"
+		\item \tcr ipar\tck =\tcb ``ipython 
+		--matplotlib =qt4 --profile = active"
+		\item \tcr week\tck =\tcb ``date +$\%$V" 
+		\tcg  ( shows week number)
+		\item \tcr khamosh\tck =\tcb ``something" 
+		\tcg  ( mutes the computer)
+		\item \tcr bajao\tck =\tcb ``something" 
+		\tcg  ( sets volume to maximum)
+	\end{itemize}
+\vfill \eject
+
+\end{multicols}
+\newpage
+\tableofcontents
+
+\end{document}
