@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage[yyyymmdd]{datetime}
+\usepackage{tabularx}
 
 \renewcommand{\dateseparator}{-}
 \newcommand{\tcb}{\color{blue}}
@@ -584,24 +585,6 @@
 	\ra Removes any stored crontask! \tcg \\
 	Be very icareful while executing this command. Will wipe out every 
 	stored tasks!
-\end{multicols}
-
-	\newpage
-
-	\tcc \section{Windows Command Prompt and equivalent Linux Terminal Commands}
-	\begin{tabularx}{0.8\textwidth} { 
-  		| >{\raggedright\arraybackslash}X 
-  		| >{\centering\arraybackslash}X 
-  		| >{\raggedleft\arraybackslash}X | }
- 		\hline
- 		item 11 & item 12 & item 13 \\
- 		\hline
- 		item 21  & item 22  & item 23  \\
-	\hline
-	\end{tabularx}
-
-	\newpage
-\begin{multicols}{2}
 
 	\tcc \section{RSYNC}
 	\hs{-0.5cm}\tcg  Notes 2: Use \textbf{crontab} to start 
@@ -729,7 +712,65 @@
 	Drops the stash of that \textbf{ID}\\
 
 \vfill \null
+\newpage
 
+\end{multicols}
+
+	\newpage
+
+    \begin{center}
+        \begin{tabular}{ | m{8em} | m{8em}| m{15em} | } 
+            \hline
+            \tcc{Terminal} & \tcc{CMD} & \tcc{Description} \\
+            \hline
+            \tcr{ls -l} & \tcp{dir} & Directory listing \\
+            \hline
+            \tcr{mv} & \tcp{ren} & Rename a file \\
+            \hline
+            \tcr{cp} & \tcp{copy} & Copy a file \\
+            \hline
+            \tcr{mv} & \tcp{move} & Move a file \\
+            \hline
+            \tcr{clear/ctrl+l} & \tcp{cls} & Clear screen \\
+            \hline
+            \tcr{rm} & \tcp{del} & Delete a file \\
+            \hline
+            \tcr{rm -rf}  \tcb{foo} & \tcp{rd /s /q} \tcb{foo}& Delete the folder \tcb{foo} \\
+            \hline
+            \tcr{diff} & \tcp{fc} & Compare the file content \\
+            \hline
+            \tcr{cd} \tcb{foo} & \tcp{chdir} or \tcp{cd} \tcb{foo} & Change directory to \tcb{foo}\\
+            \hline
+            \tcr{pwd} & \tcp{chdir} & Show the current directory \\
+            \hline
+            \tcr{mkdir} & \tcp{md} or \tcp{mkdir} & Create a new directory \\
+            \hline
+            \tcr{ls -R} & \tcp{tree} & To list directory recursively \\
+            \hline
+            \tcr{foo --help} & \tcp{foo /?} & Shows manual for command \tcr{foo}\\
+            \hline
+            ~& \tcp{tasklist} & List all the tasks\\
+            \hline
+            ~& \tcp{taskkill} /IM \tcb{foo.exe} \tcp /F & Kill the tasks \tcb{foo.exe} \\
+            \hline
+            ~& \tcp{taskkill} /PID \tcb{abcd} \tcp /F & Kill the tasks with PID \tcb{abcd} \\
+            \hline
+            ~& \tcp{color ab} & Change color of background and foreground. \tcp{a} \tck for background and \tcp{b} \tck for foreground\\
+            \hline
+            ~& \tcp{doskey/history} & Display a history of previous commands \\
+            \hline
+            ~& \tcp{F8} & Goes through the past list of commands \\
+            \hline
+            ~& \tcp{F9} & Prompts you to input the command number for among the list of past commands  \\
+            \hline
+            ~& \tcb{foo} \tcp{| clip} & Send output to clipboard \\
+            \hline
+            ~& \tcp{sfc/scannow} & scans Windows system files and looks for problems. If some files are missing or corrupted, this command fixes them \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+	\newpage
 
 \tcc \section{Active Aliases in 
 .bash \textunderscore aliases file}
@@ -786,7 +827,5 @@
 		\tcg  ( sets volume to maximum)
 	\end{itemize}
 \vfill \eject
-
-\end{multicols}
 
 \end{document}
